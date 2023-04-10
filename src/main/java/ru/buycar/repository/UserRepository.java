@@ -1,6 +1,8 @@
 package ru.buycar.repository;
 
 import lombok.AllArgsConstructor;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import ru.buycar.entity.User;
 
@@ -9,25 +11,24 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public class UserRepository {
+
     private final SessionFactory sf;
 
-    /**
-     * Сохранить в базе.
-     *
-     * @param user пользователь.
-     * @return пользователь с id.
-     */
     public User create(User user) {
+        Session session = sf.openSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
         return user;
     }
 
-    /**
-     * Обновить в базе пользователя.
-     *
-     * @param user пользователь.
-     */
     public void update(User user) {
-
+        Session session = sf.openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
     }
 
     /**
