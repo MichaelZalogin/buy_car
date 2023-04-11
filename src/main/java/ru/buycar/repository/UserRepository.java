@@ -1,11 +1,10 @@
 package ru.buycar.repository;
 
 import lombok.AllArgsConstructor;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import ru.buycar.entity.User;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,65 +15,87 @@ public class UserRepository {
 
     public User create(User user) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
-        session.close();
+        try {
+            session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
         return user;
     }
 
     public void update(User user) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        session.update(user);
-        session.getTransaction().commit();
-        session.close();
+        try {
+            session.beginTransaction();
+            session.createQuery("""
+                            UPDATE User
+                            SET login = :fLogin, password = :fPassword
+                            WHERE id = :fId
+                            """)
+                    .setParameter("fLogin", user.getLogin())
+                    .setParameter("fPassword", user.getPassword())
+                    .setParameter("fId", user.getId());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
     }
 
-    /**
-     * Удалить пользователя по id.
-     *
-     * @param userId ID
-     */
     public void delete(int userId) {
-
+        Session session = sf.openSession();
+        try {
+            session.beginTransaction();
+            session.createQuery("""
+                            DELETE User
+                            WHERE id = :fId
+                            """)
+                    .setParameter("fId", userId);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
     }
 
-    /**
-     * Список пользователь отсортированных по id.
-     *
-     * @return список пользователей.
-     */
     public List<User> findAllOrderById() {
-        return List.of();
+        Session session = sf.openSession();
+        Query<User> query = session.createQuery("FROM User");
+        List<User> sortedList = query.list();
+        sortedList.sort((user1, user2) ->
+                Integer.compare(user1.getId(), user2.getId()));
+        return sortedList;
     }
 
-    /**
-     * Найти пользователя по ID
-     *
-     * @return пользователь.
-     */
     public Optional<User> findById(int userId) {
-        return Optional.empty();
+        Session session = sf.openSession();
+        Query<User> query = session.createQuery("""
+                        FROM User
+                        WHERE id = :fId
+                        """)
+                .setParameter("fId", userId);
+        User user = query.uniqueResult();
+        return Optional.ofNullable(user);
     }
 
-    /**
-     * Список пользователей по login LIKE %key%
-     *
-     * @param key key
-     * @return список пользователей.
-     */
     public List<User> findByLikeLogin(String key) {
-        return List.of();
+        Session session = sf.openSession();
+        Query<User> query = session.createQuery("""
+                        FROM User
+                        WHERE login LIKE %:fKey%
+                        """)
+                .setParameter("fKey", key);
+        return query.list();
     }
 
-    /**
-     * Найти пользователя по login.
-     *
-     * @param login login.
-     * @return Optional or user.
-     */
     public Optional<User> findByLogin(String login) {
-        return Optional.empty();
+        Session session = sf.openSession();
+        Query<User> query = session.createQuery("""
+                        FROM User
+                        WHERE login LIKE :fLogin
+                        """)
+                .setParameter("fLogin", login);
+        User user = query.uniqueResult();
+        return Optional.ofNullable(user);
     }
 }
