@@ -18,10 +18,10 @@ public class UserUsage {
             user.setLogin("admin");
             user.setPassword("admin");
             userRepository.create(user);
-//            userRepository.findAllOrderById()
-//                    .forEach(System.out::println);
-//            userRepository.findByLikeLogin("e")
-//                    .forEach(System.out::println);
+            userRepository.findAllOrderById()
+                    .forEach(System.out::println);
+            userRepository.findByLikeLogin("e")
+                    .forEach(System.out::println);
             userRepository.findById(user.getId())
                     .ifPresent(System.out::println);
             userRepository.findByLogin("admin")

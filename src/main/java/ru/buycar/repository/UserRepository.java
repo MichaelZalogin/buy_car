@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import ru.buycar.entity.User;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +38,8 @@ public class UserRepository {
                             """)
                     .setParameter("fLogin", user.getLogin())
                     .setParameter("fPassword", user.getPassword())
-                    .setParameter("fId", user.getId());
+                    .setParameter("fId", user.getId())
+                    .executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -51,7 +54,8 @@ public class UserRepository {
                             DELETE User
                             WHERE id = :fId
                             """)
-                    .setParameter("fId", userId);
+                    .setParameter("fId", userId)
+                    .executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -62,8 +66,7 @@ public class UserRepository {
         Session session = sf.openSession();
         Query<User> query = session.createQuery("FROM User");
         List<User> sortedList = query.list();
-        sortedList.sort((user1, user2) ->
-                Integer.compare(user1.getId(), user2.getId()));
+        sortedList.sort(Comparator.comparingInt(User::getId));
         return sortedList;
     }
 
@@ -82,7 +85,7 @@ public class UserRepository {
         Session session = sf.openSession();
         Query<User> query = session.createQuery("""
                         FROM User
-                        WHERE login LIKE %:fKey%
+                        WHERE login LIKE CONCAT('%', :fKey, '%')
                         """)
                 .setParameter("fKey", key);
         return query.list();
