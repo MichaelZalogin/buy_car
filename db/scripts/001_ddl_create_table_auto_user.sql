@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS auto_user
 (
-    id       bigserial PRIMARY KEY,
-    login    varchar(255) NOT NULL UNIQUE,
-    password varchar(255) NOT NULL
+    id       BIGSERIAL PRIMARY KEY,
+    login    VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 );

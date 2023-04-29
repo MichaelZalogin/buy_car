@@ -1,7 +1,6 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @AllArgsConstructor
@@ -16,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String login;
 

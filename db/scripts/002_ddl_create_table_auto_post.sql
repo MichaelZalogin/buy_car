@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS auto_post
 (
-    id           bigserial PRIMARY KEY,
-    description  text,
-    created      timestamp NOT NULL,
-    auto_user_id bigint REFERENCES auto_user (id)
+    id           BIGSERIAL PRIMARY KEY,
+    description  TEXT,
+    created      TIMESTAMP NOT NULL,
+    auto_user_id BIGINT REFERENCES auto_user (id)
 );
