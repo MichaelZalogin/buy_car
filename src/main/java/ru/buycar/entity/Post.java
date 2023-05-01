@@ -1,11 +1,10 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -33,6 +32,6 @@ public class Post {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_post_id")
-    private List<PriceHistory> priceList = new ArrayList<>();
+    private Set<PriceHistory> priceList = new ArrayList<>();
 
 }
