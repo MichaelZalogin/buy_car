@@ -3,7 +3,7 @@ package ru.buycar.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -32,6 +32,6 @@ public class Post {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_post_id")
-    private Set<PriceHistory> priceList = new ArrayList<>();
+    private Set<PriceHistory> priceList = new HashSet<>();
 
 }
