@@ -17,5 +17,8 @@
         <mapping class="ru.buycar.entity.User"/>
         <mapping class="ru.buycar.entity.Post"/>
         <mapping class="ru.buycar.entity.PriceHistory"/>
+        <mapping class="ru.buycar.entity.Engine"/>
+        <mapping class="ru.buycar.entity.Owner"/>
+        <mapping class="ru.buycar.entity.Car"/>
     </session-factory>
 </hibernate-configuration>
