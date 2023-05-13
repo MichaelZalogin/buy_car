@@ -1,4 +1,5 @@
 CREATE TABLE owner
 (
-    id SERIAL PRIMARY KEY
+    id     BIGSERIAL PRIMARY KEY,
+    car_id BIGINT NOT NULL UNIQUE REFERENCES car (id)
 );

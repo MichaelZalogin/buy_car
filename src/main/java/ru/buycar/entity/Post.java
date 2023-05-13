@@ -1,6 +1,7 @@
 package ru.buycar.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString
+@ToString(exclude = {"auto_user_id", "auto_post_id"})
 @Entity
 @Table(name = "auto_post")
 public class Post {

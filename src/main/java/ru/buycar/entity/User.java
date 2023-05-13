@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString
+@ToString(exclude = "participates")
 @Entity
 @Table(name = "auto_user")
 public class User {

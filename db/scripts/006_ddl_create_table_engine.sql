@@ -1,4 +1,4 @@
 CREATE TABLE engine
 (
-    id SERIAL PRIMARY KEY
+    id BIGSERIAL PRIMARY KEY
 );
