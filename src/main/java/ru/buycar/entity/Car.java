@@ -23,8 +23,10 @@ public class Car {
     @JoinColumn(name = "engine_id")
     private Engine engine;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "car_owner",
+            joinColumns = {@JoinColumn(name = "car")},
+            inverseJoinColumns = {@JoinColumn(name = "owner")}
+    )
     private Set<Owner> owners = new HashSet<>();
-
 }

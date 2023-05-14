@@ -16,4 +16,5 @@
     <include file="scripts/006_ddl_create_table_engine.sql" relativeToChangelogFile="true"/>
     <include file="scripts/007_ddl_create_table_owner.sql" relativeToChangelogFile="true"/>
     <include file="scripts/008_ddl_create_table_car.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/009_ddl_create_table_car_owner.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

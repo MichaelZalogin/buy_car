@@ -1,4 +1,5 @@
 CREATE TABLE engine
 (
-    id BIGSERIAL PRIMARY KEY
+    id   BIGSERIAL PRIMARY KEY,
+    name TEXT
 );
