@@ -1,12 +1,7 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -31,16 +26,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
-    private Set<Owner> owners = new HashSet<>();
-
-    @ManyToMany
-    @JoinTable(
-            name = "participate",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "post_id")}
-    )
-    private Set<Post> participates = new HashSet<>();
+    private Owner owners;
 
 }

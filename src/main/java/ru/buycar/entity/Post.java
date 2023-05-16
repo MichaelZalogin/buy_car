@@ -1,7 +1,6 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -12,7 +11,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = {"auto_user_id", "auto_post_id"})
+@ToString(exclude = {"priceHistories", "participates"})
 @Entity
 @Table(name = "auto_post")
 public class Post {
@@ -33,6 +32,14 @@ public class Post {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_post_id")
-    private Set<PriceHistory> priceList = new HashSet<>();
+    private Set<PriceHistory> priceHistories = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "participate",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private Set<User> participates = new HashSet<>();
 
 }
