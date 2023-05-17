@@ -1,6 +1,7 @@
 package ru.buycar.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -41,5 +42,9 @@ public class Post {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private Set<User> participates = new HashSet<>();
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "car_id")
+    private Car car;
 
 }

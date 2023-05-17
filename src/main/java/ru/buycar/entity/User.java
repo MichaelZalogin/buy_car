@@ -1,14 +1,17 @@
 package ru.buycar.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "participates")
+@ToString
 @Entity
 @Table(name = "auto_user")
 public class User {
@@ -26,8 +29,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_id")
-    private Owner owners;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "auto_post_id")
+    private Set<Post> posts = new HashSet<>();
 
 }

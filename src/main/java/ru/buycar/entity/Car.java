@@ -11,6 +11,7 @@ import java.util.Set;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
+@ToString(exclude = {"owners", "engine"})
 @Table(name = "car")
 @Entity
 public class Car {

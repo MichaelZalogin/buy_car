@@ -9,6 +9,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
+@ToString
 @Table(name = "engine")
 @Entity
 public class Engine {
