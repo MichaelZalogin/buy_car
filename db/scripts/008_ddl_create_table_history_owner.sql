@@ -7,5 +7,3 @@ CREATE TABLE history_owners
     end_at   TIMESTAMP,
     UNIQUE (car_id, owner_id)
 );
-
-
