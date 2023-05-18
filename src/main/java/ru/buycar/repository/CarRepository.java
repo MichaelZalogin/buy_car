@@ -21,7 +21,7 @@ public class CarRepository {
         crudRepository.run(session -> session.merge(car));
     }
 
-    public void delete(int carId) {
+    public void delete(Long carId) {
         crudRepository.run(
                 "DELETE FROM Car WHERE id = :fId",
                 Map.of("fId", carId)
@@ -32,7 +32,7 @@ public class CarRepository {
         return crudRepository.query("FROM Car", Car.class);
     }
 
-    public Optional<Car> findById(int carId) {
+    public Optional<Car> findById(Long carId) {
         return crudRepository.optional(
                 "FROM Car WHERE id = :fId", Car.class,
                 Map.of("fId", carId)

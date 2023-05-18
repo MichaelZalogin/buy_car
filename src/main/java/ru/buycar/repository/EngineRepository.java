@@ -21,7 +21,7 @@ public class EngineRepository {
         crudRepository.run(session -> session.merge(engine));
     }
 
-    public void delete(int engineId) {
+    public void delete(Long engineId) {
         crudRepository.run(
                 "DELETE FROM Engine WHERE id = :fId",
                 Map.of("fId", engineId)
@@ -32,7 +32,7 @@ public class EngineRepository {
         return crudRepository.query("FROM Engine", Engine.class);
     }
 
-    public Optional<Engine> findById(int engineId) {
+    public Optional<Engine> findById(Long engineId) {
         return crudRepository.optional(
                 "FROM Engine WHERE id = :fId", Engine.class,
                 Map.of("fId", engineId)

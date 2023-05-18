@@ -21,7 +21,7 @@ public class OwnerRepository {
         crudRepository.run(session -> session.merge(owner));
     }
 
-    public void delete(int ownerId) {
+    public void delete(Long ownerId) {
         crudRepository.run(
                 "DELETE FROM Owner WHERE id = :fId",
                 Map.of("fId", ownerId)
