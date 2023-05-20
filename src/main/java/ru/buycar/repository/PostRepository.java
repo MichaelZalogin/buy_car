@@ -66,4 +66,5 @@ public class PostRepository {
                 ORDER BY created ASC
                 """, Post.class, Map.of("fBrand", brand));
     }
+
 }
