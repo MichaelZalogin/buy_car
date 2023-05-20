@@ -11,11 +11,11 @@
     <include file="scripts/001_ddl_create_table_auto_user.sql" relativeToChangelogFile="true"/>
     <include file="scripts/002_ddl_create_table_engine.sql" relativeToChangelogFile="true"/>
     <include file="scripts/003_ddl_create_table_owner.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/004_ddl_create_table_car.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/005_ddl_create_table_auto_post.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/006_ddl_create_table_participate.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/007_ddl_create_table_price_history.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/008_ddl_create_table_history_owner.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/009_ddl_create_table_file.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/010_ddl_create_table_car_brand.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_ddl_create_table_car_brand.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/005_ddl_create_table_car.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_ddl_create_table_auto_post.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/007_ddl_create_table_participate.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/008_ddl_create_table_price_history.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/009_ddl_create_table_history_owner.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/010_ddl_create_table_file.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
