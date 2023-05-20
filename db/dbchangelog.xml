@@ -17,4 +17,5 @@
     <include file="scripts/007_ddl_create_table_price_history.sql" relativeToChangelogFile="true"/>
     <include file="scripts/008_ddl_create_table_history_owner.sql" relativeToChangelogFile="true"/>
     <include file="scripts/009_ddl_create_table_file.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/010_ddl_create_table_car_brand.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

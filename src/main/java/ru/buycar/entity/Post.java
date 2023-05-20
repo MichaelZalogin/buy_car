@@ -47,8 +47,8 @@ public class Post {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_post_id")
-    private Set<File> files = new HashSet<>();
+    private File file;
 
 }
