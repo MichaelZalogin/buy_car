@@ -1,7 +1,6 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-@ToString(exclude = "cars")
+@ToString(exclude = "historyOwners")
 @Table(name = "owner")
 @Entity
 public class Owner {

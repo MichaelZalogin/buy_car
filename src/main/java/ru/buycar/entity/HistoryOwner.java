@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString
+@ToString(exclude = {"car", "owner"})
 @Entity
 @Table(name = "history_owner")
 public class HistoryOwner {
