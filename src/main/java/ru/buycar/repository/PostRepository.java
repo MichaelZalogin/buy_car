@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import ru.buycar.entity.CarBrand;
 import ru.buycar.entity.Post;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @AllArgsConstructor
 public class PostRepository {
@@ -49,11 +48,12 @@ public class PostRepository {
     }
 
     public List<Post> findAllPostForToday() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
         return crudRepository.query("""
                 FROM Post
-                WHERE DATE(created) = CURRENT_DATE
+                WHERE created >= :fYesterday
                 ORDER BY created ASC
-                 """, Post.class);
+                 """, Post.class, Map.of("fYesterday", yesterday));
     }
 
     public List<Post> findAllPostWithCurrentDate(CarBrand brand) {
