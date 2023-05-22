@@ -1,4 +1,4 @@
-CREATE TABLE history_owners
+CREATE TABLE history_owner
 (
     id       BIGSERIAL PRIMARY KEY,
     car_id   BIGINT NOT NULL REFERENCES car (id),
