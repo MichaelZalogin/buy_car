@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = {"priceHistories", "participates"})
+@ToString(exclude = {"priceHistories", "participates", "files"})
 @Entity
 @Table(name = "auto_post")
 public class Post {
@@ -27,7 +28,7 @@ public class Post {
     @Column(name = "created")
     private LocalDateTime created;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_user_id")
     private User user;
 
@@ -47,8 +48,16 @@ public class Post {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "auto_post_id")
-    private File file;
+    //todo добавить колонку в бд
+    @Column(name = "price")
+    private int price;
 
+    //todo убрать в бд уникальность и переделать связь
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private List<File> files;
+
+    //todo добавить статус объявления
+    @Column(name = "status")
+    private boolean status;
 }

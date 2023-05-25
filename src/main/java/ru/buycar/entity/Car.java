@@ -27,7 +27,41 @@ public class Car {
     @JoinColumn(name = "car_brand")
     private CarBrand carBrand;
 
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "model_id")
+    private Model model;
+
     @OneToMany(mappedBy = "car")
     private List<HistoryOwner> historyOwners = new ArrayList<>();
+
+    //todo обновить таблицы
+    @Column(name = "year")
+    private int year;
+
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "body_id")
+    private Body body;
+
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "color_id")
+    private Color color;
+
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "transmission_id")
+    private Transmission transmission;
+
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_of_fuel_id")
+    private TypeOfFuel typeOfFuel;
+
+    //todo обновить таблицы
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "door_id")
+    private DoorCount doorCount;
 
 }
