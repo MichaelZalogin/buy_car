@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "model")
 @Entity
 public class Model {
-    //todo добавить таблицы
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

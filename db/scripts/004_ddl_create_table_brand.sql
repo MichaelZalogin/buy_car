@@ -1,4 +1,4 @@
-CREATE TABLE car_brand
+CREATE TABLE brand
 (
     id   BIGSERIAL PRIMARY KEY,
     name TEXT NOT NULL

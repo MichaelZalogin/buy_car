@@ -9,10 +9,10 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-@Table(name = "type_of_fuel")
+@Table(name = "fuel_type")
 @Entity
-public class TypeOfFuel {
-    //todo добавить таблицу
+public class FuelType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

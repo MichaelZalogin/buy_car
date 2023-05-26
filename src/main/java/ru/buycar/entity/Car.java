@@ -57,7 +57,7 @@ public class Car {
     //todo обновить таблицы
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_of_fuel_id")
-    private TypeOfFuel typeOfFuel;
+    private FuelType typeOfFuel;
 
     //todo обновить таблицы
     @ManyToOne(fetch = FetchType.LAZY)
