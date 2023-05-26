@@ -28,7 +28,7 @@ public class Post {
     @Column(name = "created")
     private LocalDateTime created;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "auto_user_id")
     private User user;
 
@@ -48,16 +48,14 @@ public class Post {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    //todo добавить колонку в бд
     @Column(name = "price")
     private int price;
 
-    //todo убрать в бд уникальность и переделать связь
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "auto_post_id")
     private List<File> files;
 
-    //todo добавить статус объявления
     @Column(name = "status")
     private boolean status;
+
 }

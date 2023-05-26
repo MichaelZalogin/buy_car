@@ -10,7 +10,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-@ToString(exclude = "historyOwners")
+@ToString(exclude = {"historyOwners", "user"})
 @Table(name = "owner")
 @Entity
 public class Owner {
@@ -22,9 +22,7 @@ public class Owner {
     @Column(name = "name")
     private String name;
 
-    //todo добавить колонку
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -11,14 +11,14 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @ToString
 @Entity
-@Table(name = "transmission")
-public class Transmission {
+@Table(name = "years")
+public class Years {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "year")
+    private int year;
 
 }

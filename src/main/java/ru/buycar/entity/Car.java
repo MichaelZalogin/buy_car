@@ -1,7 +1,6 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 @Getter
 @Setter
 @Table(name = "car")
@@ -19,49 +19,59 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "engine_id")
     private Engine engine;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_brand")
     private Brand brand;
 
-    //todo обновить таблицы
+    @Column(name = "vin_number")
+    private String vinNumber;
+
+    @Column(name = "mileage")
+    private int mileage;
+
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "model_id")
     private Model model;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "car")
     private List<HistoryOwner> historyOwners = new ArrayList<>();
 
-    //todo обновить таблицы
-    @Column(name = "year")
-    private int year;
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "year_id")
+    private Years year;
 
-    //todo обновить таблицы
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "body_id")
     private Body body;
 
-    //todo обновить таблицы
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "color_id")
     private Color color;
 
-    //todo обновить таблицы
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transmission_id")
     private Transmission transmission;
 
-    //todo обновить таблицы
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_of_fuel_id")
-    private FuelType typeOfFuel;
+    @JoinColumn(name = "fuel_type_id")
+    private FuelType fuelType;
 
-    //todo обновить таблицы
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "door_id")
+    @JoinColumn(name = "door_count_id")
     private DoorCount doorCount;
 
 }
