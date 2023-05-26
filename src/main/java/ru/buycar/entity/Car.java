@@ -25,7 +25,7 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_brand")
-    private CarBrand carBrand;
+    private Brand brand;
 
     //todo обновить таблицы
     @ManyToOne(fetch = FetchType.LAZY)

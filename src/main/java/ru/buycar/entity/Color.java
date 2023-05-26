@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "color")
 @Entity
 public class Color {
-    //todo добавить таблицу
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +20,6 @@ public class Color {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "code")
+    private String code;
 }

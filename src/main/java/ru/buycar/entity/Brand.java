@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "car_brand")
+@Table(name = "brand")
 @Entity
-public class CarBrand {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

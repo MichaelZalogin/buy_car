@@ -1,7 +1,7 @@
 package ru.buycar.repository;
 
 import lombok.AllArgsConstructor;
-import ru.buycar.entity.CarBrand;
+import ru.buycar.entity.Brand;
 import ru.buycar.entity.Post;
 
 import java.time.LocalDateTime;
@@ -56,7 +56,7 @@ public class PostRepository {
                  """, Post.class, Map.of("fYesterday", yesterday));
     }
 
-    public List<Post> findAllPostWithCurrentDate(CarBrand brand) {
+    public List<Post> findAllPostWithCurrentDate(Brand brand) {
         return crudRepository.query("""
                 SELECT t
                 FROM Post p

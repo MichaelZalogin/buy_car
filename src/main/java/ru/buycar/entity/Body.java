@@ -1,7 +1,6 @@
 package ru.buycar.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @AllArgsConstructor
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "body")
 @Entity
 public class Body {
-    //todo добавить таблицу
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

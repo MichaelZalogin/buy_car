@@ -25,6 +25,6 @@ public class Model {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
-    private CarBrand brand;
+    private Brand brand;
 
 }
