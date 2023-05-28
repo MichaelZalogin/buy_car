@@ -1,15 +1,17 @@
-package ru.buycar.repository;
+package ru.buycar.repository.hibernate;
 
 import lombok.AllArgsConstructor;
 import ru.buycar.entity.User;
+import ru.buycar.repository.BaseCrudRepository;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class UserRepository {
+public class HibernateUserRepository {
 
-    private final CrudRepository crudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     /**
      * Сохранить в базе.
@@ -18,7 +20,7 @@ public class UserRepository {
      * @return пользователь с id.
      */
     public User create(User user) {
-        crudRepository.run(session -> session.persist(user));
+        baseCrudRepository.run(session -> session.persist(user));
         return user;
     }
 
@@ -28,7 +30,7 @@ public class UserRepository {
      * @param user пользователь.
      */
     public void update(User user) {
-        crudRepository.run(session -> session.merge(user));
+        baseCrudRepository.run(session -> session.merge(user));
     }
 
     /**
@@ -37,7 +39,7 @@ public class UserRepository {
      * @param userId ID
      */
     public void delete(int userId) {
-        crudRepository.run(
+        baseCrudRepository.run(
                 "DELETE FROM User WHERE id = :fId",
                 Map.of("fId", userId)
         );
@@ -49,7 +51,7 @@ public class UserRepository {
      * @return список пользователей.
      */
     public List<User> findAllOrderById() {
-        return crudRepository.query("FROM User ORDER BY id ASC", User.class);
+        return baseCrudRepository.query("FROM User ORDER BY id ASC", User.class);
     }
 
     /**
@@ -58,7 +60,7 @@ public class UserRepository {
      * @return пользователь.
      */
     public Optional<User> findById(int userId) {
-        return crudRepository.optional(
+        return baseCrudRepository.optional(
                 "FROM User WHERE id = :fId", User.class,
                 Map.of("fId", userId)
         );
@@ -71,7 +73,7 @@ public class UserRepository {
      * @return список пользователей.
      */
     public List<User> findByLikeLogin(String key) {
-        return crudRepository.query(
+        return baseCrudRepository.query(
                 "FROM User WHERE login LIKE :fKey", User.class,
                 Map.of("fKey", "%" + key + "%")
         );
@@ -84,7 +86,7 @@ public class UserRepository {
      * @return Optional or user.
      */
     public Optional<User> findByLogin(String login) {
-        return crudRepository.optional(
+        return baseCrudRepository.optional(
                 "FROM User WHERE login = :fLogin", User.class,
                 Map.of("fLogin", login)
         );

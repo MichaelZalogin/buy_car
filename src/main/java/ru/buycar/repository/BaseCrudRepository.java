@@ -12,7 +12,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 @AllArgsConstructor
-public class CrudRepository {
+public class BaseCrudRepository {
+
     private final SessionFactory sf;
 
     public void run(Consumer<Session> command) {

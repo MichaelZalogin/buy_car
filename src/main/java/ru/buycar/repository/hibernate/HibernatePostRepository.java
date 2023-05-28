@@ -1,46 +1,47 @@
-package ru.buycar.repository;
+package ru.buycar.repository.hibernate;
 
 import lombok.AllArgsConstructor;
 import ru.buycar.entity.Brand;
 import ru.buycar.entity.Post;
+import ru.buycar.repository.BaseCrudRepository;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
 @AllArgsConstructor
-public class PostRepository {
+public class HibernatePostRepository {
 
-    private CrudRepository crudRepository;
+    private BaseCrudRepository baseCrudRepository;
 
     public Post create(Post post) {
-        crudRepository.run(session -> session.persist(post));
+        baseCrudRepository.run(session -> session.persist(post));
         return post;
     }
 
     public void update(Post post) {
-        crudRepository.run(session -> session.merge(post));
+        baseCrudRepository.run(session -> session.merge(post));
     }
 
     public void delete(Long postId) {
-        crudRepository.run(
+        baseCrudRepository.run(
                 "DELETE FROM Post WHERE id = :fId",
                 Map.of("fId", postId)
         );
     }
 
     public Optional<Post> findById(Long postId) {
-        return crudRepository.optional(
+        return baseCrudRepository.optional(
                 "FROM Post WHERE id = :fId", Post.class,
                 Map.of("fId", postId)
         );
     }
 
     public List<Post> findAllOrderByDate() {
-        return crudRepository.query("FROM Post ORDER BY created ASC", Post.class);
+        return baseCrudRepository.query("FROM Post ORDER BY created ASC", Post.class);
     }
 
     public List<Post> findAllWithPhotoOrderByDate() {
-        return crudRepository.query("""
+        return baseCrudRepository.query("""
                 FROM Post
                 WHERE File NOT NULL
                 ORDER BY created ASC
@@ -49,7 +50,7 @@ public class PostRepository {
 
     public List<Post> findAllPostForToday() {
         LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
-        return crudRepository.query("""
+        return baseCrudRepository.query("""
                 FROM Post
                 WHERE created >= :fYesterday
                 ORDER BY created ASC
@@ -57,7 +58,7 @@ public class PostRepository {
     }
 
     public List<Post> findAllPostWithCurrentDate(Brand brand) {
-        return crudRepository.query("""
+        return baseCrudRepository.query("""
                 SELECT t
                 FROM Post p
                 JOIN FETCH p.car c
