@@ -14,11 +14,21 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
-        <mapping class="ru.buycar.entity.User"/>
+        <mapping class="ru.buycar.entity.Body"/>
+        <mapping class="ru.buycar.entity.Brand"/>
+        <mapping class="ru.buycar.entity.Car"/>
+        <mapping class="ru.buycar.entity.Color"/>
+        <mapping class="ru.buycar.entity.DoorCount"/>
+        <mapping class="ru.buycar.entity.Engine"/>
+        <mapping class="ru.buycar.entity.File"/>
+        <mapping class="ru.buycar.entity.FuelType"/>
+        <mapping class="ru.buycar.entity.HistoryOwner"/>
+        <mapping class="ru.buycar.entity.Model"/>
+        <mapping class="ru.buycar.entity.Owner"/>
         <mapping class="ru.buycar.entity.Post"/>
         <mapping class="ru.buycar.entity.PriceHistory"/>
-        <mapping class="ru.buycar.entity.Engine"/>
-        <mapping class="ru.buycar.entity.Owner"/>
-        <mapping class="ru.buycar.entity.Car"/>
+        <mapping class="ru.buycar.entity.Transmission"/>
+        <mapping class="ru.buycar.entity.User"/>
+        <mapping class="ru.buycar.entity.Years"/>
     </session-factory>
 </hibernate-configuration>
