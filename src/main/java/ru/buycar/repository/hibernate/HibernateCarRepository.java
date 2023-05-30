@@ -1,6 +1,7 @@
 package ru.buycar.repository.hibernate;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import ru.buycar.entity.Car;
 import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.CarRepository;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
+@Repository
 public class HibernateCarRepository implements CarRepository {
 
     private final BaseCrudRepository baseCrudRepository;
