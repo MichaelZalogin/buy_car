@@ -3,37 +3,43 @@ package ru.buycar.repository.hibernate;
 import lombok.AllArgsConstructor;
 import ru.buycar.entity.Engine;
 import ru.buycar.repository.BaseCrudRepository;
+import ru.buycar.repository.interfaces.EngineRepository;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class HibernateEngineRepository {
+public class HibernateEngineRepository implements EngineRepository {
 
     private final BaseCrudRepository baseCrudRepository;
 
-    public Engine create(Engine engine) {
+    @Override
+    public Engine addEngine(Engine engine) {
         baseCrudRepository.run(session -> session.persist(engine));
         return engine;
     }
 
-    public void update(Engine engine) {
+    @Override
+    public void updateEngine(Engine engine) {
         baseCrudRepository.run(session -> session.merge(engine));
     }
 
-    public void delete(Long engineId) {
+    @Override
+    public void deleteEngine(Long engineId) {
         baseCrudRepository.run(
                 "DELETE FROM Engine WHERE id = :fId",
                 Map.of("fId", engineId)
         );
     }
 
-    public List<Engine> findAll() {
+    @Override
+    public List<Engine> findAllEngines() {
         return baseCrudRepository.query("FROM Engine", Engine.class);
     }
 
-    public Optional<Engine> findById(Long engineId) {
+    @Override
+    public Optional<Engine> findEngineById(Long engineId) {
         return baseCrudRepository.optional(
                 "FROM Engine WHERE id = :fId", Engine.class,
                 Map.of("fId", engineId)

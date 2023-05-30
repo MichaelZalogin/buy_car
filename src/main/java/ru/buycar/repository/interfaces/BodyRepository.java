@@ -9,6 +9,6 @@ public interface BodyRepository {
 
     List<Body> findAllBodies();
 
-    Optional<Body> findBodyById(int bodyId);
+    Optional<Body> findBodyById(Long bodyId);
 
 }
