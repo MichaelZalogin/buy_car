@@ -7,6 +7,7 @@ import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.DoorCountRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -17,12 +18,15 @@ public class HibernateDoorCountRepository implements DoorCountRepository {
 
     @Override
     public List<DoorCount> findAllDoorCounts() {
-        return null;
+        return baseCrudRepository.query("FROM DoorCount", DoorCount.class);
     }
 
     @Override
     public Optional<DoorCount> findDoorCountById(Long doorCountId) {
-        return Optional.empty();
+        return baseCrudRepository.optional(
+                "FROM DoorCount WHERE id = :fId", DoorCount.class,
+                Map.of("fId", doorCountId)
+        );
     }
 
 }

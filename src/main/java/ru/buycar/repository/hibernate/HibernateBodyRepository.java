@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 import ru.buycar.entity.Body;
 import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.BodyRepository;
-
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -17,11 +17,15 @@ public class HibernateBodyRepository implements BodyRepository {
 
     @Override
     public List<Body> findAllBodies() {
-        return null;
+        return baseCrudRepository.query("FROM Body", Body.class);
     }
 
     @Override
     public Optional<Body> findBodyById(Long bodyId) {
-        return Optional.empty();
+        return baseCrudRepository.optional(
+                "FROM Body WHERE id = :fId", Body.class,
+                Map.of("fId", bodyId)
+        );
     }
+
 }

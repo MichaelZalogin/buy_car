@@ -7,6 +7,7 @@ import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.ColorRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -17,11 +18,14 @@ public class HibernateColorRepository implements ColorRepository {
 
     @Override
     public List<Color> findAllColours() {
-        return null;
+        return baseCrudRepository.query("FROM Color", Color.class);
     }
 
     @Override
     public Optional<Color> findColourById(Long colourId) {
-        return Optional.empty();
+        return baseCrudRepository.optional(
+                "FROM Color WHERE id = :fId", Color.class,
+                Map.of("fId", colourId)
+        );
     }
 }

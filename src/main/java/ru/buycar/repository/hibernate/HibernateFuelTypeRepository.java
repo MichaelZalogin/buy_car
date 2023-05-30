@@ -7,6 +7,7 @@ import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.FuelTypeRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -17,12 +18,15 @@ public class HibernateFuelTypeRepository implements FuelTypeRepository {
 
     @Override
     public List<FuelType> findAllFuelTypes() {
-        return null;
+        return baseCrudRepository.query("FROM FuelType", FuelType.class);
     }
 
     @Override
     public Optional<FuelType> findFuelTypeById(Long brandId) {
-        return Optional.empty();
+        return baseCrudRepository.optional(
+                "FROM FuelType WHERE id = :fId", FuelType.class,
+                Map.of("fId", brandId)
+        );
     }
 
 }
