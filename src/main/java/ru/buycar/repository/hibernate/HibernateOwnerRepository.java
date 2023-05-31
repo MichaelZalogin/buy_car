@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class HibernateOwnerRepository implements OwnerRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public Owner addOwner(Owner owner) {

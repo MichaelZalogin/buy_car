@@ -10,7 +10,7 @@ import ru.buycar.repository.interfaces.OwnerHistoryRepository;
 @Repository
 public class HibernateOwnerHistoryRepository implements OwnerHistoryRepository {
 
-    BaseCrudRepository crudRepository;
+    private final BaseCrudRepository crudRepository;
 
     @Override
     public HistoryOwner addOwnerHistory(HistoryOwner historyOwner) {

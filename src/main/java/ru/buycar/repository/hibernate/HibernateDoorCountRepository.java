@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class HibernateDoorCountRepository implements DoorCountRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public List<DoorCount> findAllDoorCounts() {

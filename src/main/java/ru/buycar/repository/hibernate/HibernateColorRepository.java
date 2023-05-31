@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class HibernateColorRepository implements ColorRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public List<Color> findAllColours() {

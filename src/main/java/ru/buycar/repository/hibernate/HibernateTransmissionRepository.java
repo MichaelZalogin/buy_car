@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class HibernateTransmissionRepository implements TransmissionRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public List<Transmission> findAllTransmissions() {

@@ -1,6 +1,7 @@
 package ru.buycar.repository.hibernate;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import ru.buycar.entity.Brand;
 import ru.buycar.entity.Post;
 import ru.buycar.repository.BaseCrudRepository;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @AllArgsConstructor
+@Repository
 public class HibernatePostRepository {
 
     private BaseCrudRepository baseCrudRepository;

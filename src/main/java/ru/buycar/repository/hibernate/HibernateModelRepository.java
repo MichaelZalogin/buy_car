@@ -1,26 +1,32 @@
 package ru.buycar.repository.hibernate;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.buycar.entity.Model;
 import ru.buycar.repository.BaseCrudRepository;
 import ru.buycar.repository.interfaces.ModelRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
+@AllArgsConstructor
 public class HibernateModelRepository implements ModelRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public List<Model> getAllModelsByBrandId(Long brandId) {
-        return null;
+        return baseCrudRepository.query("FROM Model", Model.class);
     }
 
     @Override
     public Optional<Model> getModelById(Long modelId) {
-        return Optional.empty();
+        return baseCrudRepository.optional(
+                "FROM Model WHERE id = :fId", Model.class,
+                Map.of("fId", modelId)
+        );
     }
 
 }

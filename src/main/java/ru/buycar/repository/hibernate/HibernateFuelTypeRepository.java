@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class HibernateFuelTypeRepository implements FuelTypeRepository {
 
-    BaseCrudRepository baseCrudRepository;
+    private final BaseCrudRepository baseCrudRepository;
 
     @Override
     public List<FuelType> findAllFuelTypes() {
