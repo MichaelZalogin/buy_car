@@ -1,11 +1,11 @@
-package ru.buycar.repository.interfaces;
+package ru.buycar.service.interfaces;
 
 import ru.buycar.entity.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository {
+public interface UserService {
 
     User addUser(User user);
 

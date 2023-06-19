@@ -1,11 +1,11 @@
-package ru.buycar.repository.interfaces;
+package ru.buycar.service.interfaces;
 
 import ru.buycar.entity.Post;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface PostRepository {
+public interface PostService {
 
     Post addPost(Post post);
 
